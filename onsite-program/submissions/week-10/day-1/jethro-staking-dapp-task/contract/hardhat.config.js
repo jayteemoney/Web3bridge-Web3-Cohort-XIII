@@ -1,0 +1,17 @@
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config(); // load variables from .env
+
+/** @type import('hardhat/config').HardhatUserConfig */
+module.exports = {
+  solidity: "0.8.28",
+  networks: {
+    hardhat: {}, // local Hardhat network
+    sepolia: {
+      url: process.env.SEPOLIA_RPC_URL || "", // e.g. from Alchemy/Infura
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+    },
+  },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_API_KEY || "", // for contract verification
+  },
+};
